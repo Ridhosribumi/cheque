@@ -1,0 +1,242 @@
+{
+ "autoname": "naming_series:",
+ "creation": "2019-09-12 17:50:31.467275",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "naming_series",
+  "cheque_status",
+  "disbursment_date",
+  "rejected_date",
+  "invalid_date",
+  "bank_receive",
+  "column_break_8",
+  "posting_date",
+  "mode_of_payment",
+  "account_paid_to",
+  "section_break_12",
+  "cheque_no",
+  "cheque_bank",
+  "column_break_15",
+  "cheque_date",
+  "cheque_due_date",
+  "section_break_18",
+  "party_type",
+  "column_break_20",
+  "party",
+  "nominal_cheque",
+  "section_break_23",
+  "payment_entry",
+  "reference_no",
+  "reference_date",
+  "column_break_27",
+  "remarks",
+  "section_break_29",
+  "more_information_section",
+  "company",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CHI.###",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cheque_status",
+   "fieldtype": "Select",
+   "label": "Cheque Status",
+   "options": "Draft\nAccepted\nRejected\nInvalid",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.cheque_status =='Accepted'",
+   "fieldname": "disbursment_date",
+   "fieldtype": "Date",
+   "label": "Disbursment Date",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.cheque_status =='Rejected'",
+   "fieldname": "rejected_date",
+   "fieldtype": "Date",
+   "label": "Rejected Date",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.cheque_status =='Invalid'",
+   "fieldname": "invalid_date",
+   "fieldtype": "Date",
+   "label": "Invalid Date",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:(doc.cheque_status == 'Accepted')",
+   "fieldname": "bank_receive",
+   "fieldtype": "Link",
+   "label": "Bank Receive",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date"
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment"
+  },
+  {
+   "fieldname": "account_paid_to",
+   "fieldtype": "Link",
+   "label": "Account Paid To",
+   "options": "Account"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cheque_no",
+   "fieldtype": "Data",
+   "label": "Cheque No"
+  },
+  {
+   "fieldname": "cheque_bank",
+   "fieldtype": "Data",
+   "label": "Cheque Bank"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cheque_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Cheque Date"
+  },
+  {
+   "fieldname": "cheque_due_date",
+   "fieldtype": "Date",
+   "label": "Cheque Due Date"
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Link",
+   "label": "Party Type",
+   "no_copy": 1,
+   "options": "DocType"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Party",
+   "no_copy": 1,
+   "options": "party_type"
+  },
+  {
+   "fieldname": "nominal_cheque",
+   "fieldtype": "Currency",
+   "label": "Nominal Cheque"
+  },
+  {
+   "fieldname": "section_break_23",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_entry",
+   "fieldtype": "Data",
+   "label": "Payment Entry"
+  },
+  {
+   "fieldname": "reference_no",
+   "fieldtype": "Data",
+   "label": "Reference No"
+  },
+  {
+   "fieldname": "reference_date",
+   "fieldtype": "Date",
+   "label": "Reference Date"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "section_break_29",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "more_information_section",
+   "fieldtype": "Data",
+   "label": "More Information"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Cheque In",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2019-09-25 13:59:48.717912",
+ "modified_by": "Administrator",
+ "module": "Cheque",
+ "name": "Cheque In",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "delete": 1,
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
